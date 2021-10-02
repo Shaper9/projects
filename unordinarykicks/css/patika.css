@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+.slikica_patika_card {
+  /* max-width: 400px;
+    max-height: 400px; */
+  flex-shrink: 1;
+}
+img {
+  height: 250px;
+  width: auto;
+  max-height: 400px;
+  max-width: 490px;
+  object-fit: contain;
+}
+.main_container {
+  margin: auto;
+  display: flex;
+  width: 1300px;
+  height: 60%;
+}
+.slikice_patika_container {
+  width: 1000px;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-right: 10px;
+}
+
+.description {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  max-width: 250px;
+  font-family: OCR A Std, monospace;
+}
+
+#logo_gore {
+  display: block;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+}
+
+@media all and (max-width: 1296px) {
+  .main_container {
+    width: 768px;
+    height: 768px;
+  }
+  img {
+    max-height: 192px;
+    max-width: 256px;
+  }
+}
+@media all and (max-width: 768px) {
+  .main_container {
+    flex-wrap: wrap;
+    width: 512px;
+    /* height: 512px; */
+  }
+}

@@ -1,0 +1,38 @@
+
+span{
+    margin-right: 5px;
+}
+
+body{
+    background-color: #feffde;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main_container{
+    background-color: rgb(156, 150, 98);
+    width: 600px;
+    height: 600px;
+    padding: 16px;
+    
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+input,select,button{
+    border-radius: 50px;
+    border: 2px solid grey;
+
+}
+
+button{
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+}    

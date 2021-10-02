@@ -1,0 +1,28 @@
+body{
+    width: 100vh;
+    height: 100vh;
+    background-color: beige;
+    overflow: hidden
+    
+}
+
+
+
+.main_container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    
+    justify-content: space-around;
+}
+
+
+
+.dugme{
+    padding: 10px;
+    width: 160px;
+    border-radius: 10px;
+    border-left: 5px red solid;
+    border-right: 5px red solid;
+    text-align: center;  
+}

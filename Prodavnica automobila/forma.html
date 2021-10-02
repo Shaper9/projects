@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/formacss.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma</title>
+</head>
+<body>
+<div class="main_container">
+
+    <h1>UNESITE VASE PODATKE ISPOD</h1>
+<form name="kupovina" method="POST" action="forma.php">
+    Ime: <input required type="text" name="name"/>  <!--name="name" sluzi za prepoznavanje ovog inputa u php-u--> <br><br>
+    Prezime: <input required type="text" name="surname">
+    <br><br><br>
+    Datum rodjenja: <input type="date" name="date"> <br><br><br>
+    Oznacite vas pol:<br> 
+    <input type="radio" name="gender" value="muski">muski<br>
+    <input type="radio" name="gender" value="zenski">zenski<br><br><br>
+
+    <span>Izaberite nacin placanja</span> <select required name="payment">
+        <option value="VISA">VISA</option>
+        <option value="MASTER">MASTER</option>
+        <option value="CRYPTO">CRYPTO</option>
+    </select><br><br>
+
+    <span>Izaberite grad u kojem cete preuzeti vozilo</span> <select required name="city">
+        <option value="BEOGRAD">BEOGRAD</option>
+        <option value="NOVISAD">NOVI SAD</option>
+        <option value="NIS">NIS</option>
+    </select>
+    <br><br>
+    
+    
+    Izborom nacina placanja "CRYPTO" mozete ostvariti dodatni popust od 10%<br><br><br><br><br>
+    <button type="submit">POTVRDI</button>
+
+    
+</form>
+
+</div>
+
+</body>
+</html>
