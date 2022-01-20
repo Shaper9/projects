@@ -1,0 +1,70 @@
+body{
+    font-family: 'Luxurious Roman', cursive;
+}
+
+.page-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.page-left{
+    position: relative;
+    width: 50%;
+    background-color: #fa8072;
+    background-image: url(./food_left.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 200ms ease-in-out;
+    p{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: white;
+        height: 15%;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.page-left.active{
+    width: 95%;
+}
+
+.page-left:hover{
+    width: 80%;
+}
+
+.page-right{
+    position: relative;
+    width: 50%;
+    background-color: #deb887;
+    background-image: url(./filip-mishevski-c5QdMcuFlgY-unsplash.jpg);
+    background-size: cover;
+    transition: width 400ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 200ms ease-in-out;
+    p{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: white;
+        height: 15%;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.page-right.active{
+    width: 95%;
+}
+
+.page-right:hover{
+    width: 80%;
+}
+
+

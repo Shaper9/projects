@@ -1,0 +1,275 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: black;
+  text-decoration: underline;
+}
+
+body {
+  font-family: "Luxurious Roman", cursive;
+}
+
+.page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.page-left {
+  position: relative;
+  width: 50%;
+  background-color: #fa8072;
+  background-image: url(./food_left.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 200ms ease-in-out;
+}
+.page-left p {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  height: 15%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.page-left.active {
+  width: 95%;
+}
+
+.page-left:hover {
+  width: 80%;
+}
+
+.page-right {
+  position: relative;
+  width: 50%;
+  background-color: #deb887;
+  background-image: url(./filip-mishevski-c5QdMcuFlgY-unsplash.jpg);
+  background-size: cover;
+  transition: width 400ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 200ms ease-in-out;
+}
+.page-right p {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  height: 15%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.page-right.active {
+  width: 95%;
+}
+
+.page-right:hover {
+  width: 80%;
+}
+
+.page-left_content {
+  position: absolute;
+  height: 100%;
+  width: 95%;
+  background-color: #fa8072;
+  transition: opacity 200ms ease-in-out;
+  transition-delay: 200ms;
+  opacity: 100%;
+}
+
+.page-left_content.hidden {
+  z-index: -10;
+  /*  ***************************   */
+  opacity: 0%;
+}
+
+.page-left_content-page {
+  width: 100%;
+  height: 100%;
+}
+
+.random-recipe {
+  height: 100%;
+  width: 100%;
+  padding: 8%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "img ingr nutri" "instru instru nutri";
+  grid-gap: 10px;
+}
+.random-recipe .recipe-img {
+  grid-area: img;
+  border: 2px solid black;
+  border-radius: 16px;
+}
+.random-recipe .recipe-img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+}
+.random-recipe .recipe-ingridients {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  grid-area: ingr;
+  border: 2px solid black;
+  background: #BAFFB4;
+  border-radius: 15px;
+}
+.random-recipe .recipe-instructions {
+  grid-area: instru;
+  border: 2px solid black;
+  border-radius: 15px;
+  background: #BAFFB4;
+  padding: 25px;
+}
+.random-recipe p {
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 50px;
+}
+.random-recipe .recipe-nutrilabel {
+  grid-area: nutri;
+  border: 2px solid black;
+  background-color: white;
+}
+.random-recipe .recipe-nutrilabel #spoonacular-nutrition-label {
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Times New Roman", Times, serif;
+}
+.random-recipe .recipe-nutrilabel #spoonacular-nutrition-label div {
+  text-align: center;
+  border-bottom: 10px solid black;
+  font-size: 25px;
+  font-weight: bold;
+}
+.random-recipe .recipe-nutrilabel #spoonacular-nutrition-label table {
+  margin-top: 10px;
+  width: 100%;
+}
+.random-recipe .recipe-nutrilabel #spoonacular-nutrition-label table tbody #calorie-summary td {
+  font-size: 25px;
+  border-bottom: 5px solid black;
+}
+
+.page-right_content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 95%;
+  background-color: burlywood;
+  transition: opacity 200ms ease-in-out;
+  transition-delay: 200ms;
+  opacity: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-right_content.hidden {
+  z-index: -10;
+  /*  ***************************   */
+  opacity: 0%;
+}
+
+.page-right_content-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.news .news1,
+.news .news2,
+.news .news3,
+.news .news4,
+.news .news5,
+.news .news6,
+.news .news7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60%;
+  max-height: 30%;
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+.news .news1 .news-info,
+.news .news2 .news-info,
+.news .news3 .news-info,
+.news .news4 .news-info,
+.news .news5 .news-info,
+.news .news6 .news-info,
+.news .news7 .news-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.news .news1 .news-info p,
+.news .news2 .news-info p,
+.news .news3 .news-info p,
+.news .news4 .news-info p,
+.news .news5 .news-info p,
+.news .news6 .news-info p,
+.news .news7 .news-info p {
+  border-bottom: 1px dotted white;
+}
+.news .news1 .news-content,
+.news .news2 .news-content,
+.news .news3 .news-content,
+.news .news4 .news-content,
+.news .news5 .news-content,
+.news .news6 .news-content,
+.news .news7 .news-content {
+  display: flex;
+}
+.news .news1 .news-content .news-img,
+.news .news2 .news-content .news-img,
+.news .news3 .news-content .news-img,
+.news .news4 .news-content .news-img,
+.news .news5 .news-content .news-img,
+.news .news6 .news-content .news-img,
+.news .news7 .news-content .news-img {
+  max-height: 150px;
+  border-radius: 15px;
+  padding: 5px;
+}

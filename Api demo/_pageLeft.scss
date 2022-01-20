@@ -1,0 +1,97 @@
+.page-left_content{
+    position: absolute;
+    height: 100%;
+    width: 95%;
+    background-color: #fa8072;
+    transition: opacity 200ms ease-in-out;
+    transition-delay: 200ms;
+    opacity: 100%;
+}
+
+.page-left_content.hidden{
+    z-index: -10;  /*  ***************************   */
+    opacity: 0%;
+}
+
+.page-left_content-page{
+    width: 100%;
+    height: 100%;
+}
+
+.random-recipe{
+    height: 100%;
+    width: 100%;
+    padding: 8%;
+    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-template-areas:
+        "img ingr nutri"
+        "instru instru nutri" ;
+    grid-gap: 10px;
+    .recipe-img{
+        grid-area: img;
+        border: 2px solid black;
+        border-radius: 16px;
+        img{
+            height: 100%;
+            width: 100%;
+            border-radius: 16px;
+        }
+    }
+    .recipe-ingridients{
+        text-align: center;
+        display: flex;
+        align-items: center;
+        grid-area: ingr;
+        border: 2px solid black;
+        background: #BAFFB4;
+        border-radius: 15px;
+    }
+    .recipe-instructions{
+        grid-area: instru;
+        border: 2px solid black;
+        border-radius: 15px;
+        background: #BAFFB4;
+        padding: 25px;
+    }
+    p{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        top: 50px;
+    }
+    .recipe-nutrilabel{
+        grid-area: nutri;
+        border: 2px solid black;
+        background-color: white;
+        #spoonacular-nutrition-label{
+            height: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: "Times New Roman", Times, serif;
+            div{
+                text-align: center;
+                border-bottom: 10px solid black;
+                font-size: 25px;
+                font-weight: bold;
+            }
+            table{
+                margin-top: 10px;
+                width: 100%;
+                tbody{
+                    #calorie-summary{
+                        td{
+                            font-size: 25px;
+                            border-bottom: 5px solid black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
