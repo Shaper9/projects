@@ -1,3 +1,4 @@
+
 To succsessfully use this website please:
 1. Download XAMPP v3.2.4 or higher
 2. Create initial database
@@ -65,4 +66,3 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO prodavnice(adresa_tekst, adresa_broj, grad_id)
 VALUES ("Adresa", "5A", 2);
-
