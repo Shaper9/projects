@@ -17,7 +17,7 @@ const HeaderCardButton = props => {
     const { items } = cartCtx
 
     const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`;
-    // Use effect koristimo za bump effel, tj. da dodamo klasu classes.bump
+    // Use effect koristimo za bump effect, tj. da dodamo klasu classes.bump
     useEffect(() => {
         if (cartCtx.items.length === 0) {
             return
