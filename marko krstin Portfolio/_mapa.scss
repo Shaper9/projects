@@ -1,0 +1,15 @@
+$colors: (
+    "color-white":white,
+    "color-primary": #79B4B7,
+    "color-secondary": #F8F0DF,
+    "color-tertiary": #9D9D9D,
+);
+
+$fonts:(
+    "main-font":('Poppins', sans-serif),
+);
+
+
+@function color($color-name){
+    @return map-get($colors, $color-name )
+};
