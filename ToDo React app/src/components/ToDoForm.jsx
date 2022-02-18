@@ -37,7 +37,7 @@ const ToDoForm = (props) => {
                     <option value="Hobby" name='Hobby'>Hobby</option>
                     <option value="Free-time" name='Free-Time'>Free time</option>
                 </select>
-                <Button handleSubmit={submitHandler}>SUBMIT</Button>
+                <Button handleClick={submitHandler}>SUBMIT</Button>
             </form>
         </React.Fragment>
     )

@@ -7,7 +7,6 @@ import ToDoList from "./components/ToDoList";
 
 function App() {
 
-
   const [dummyToDo, setDummyToDo] = useState([
     {
       id: (Math.random()).toString(),
@@ -19,18 +18,20 @@ function App() {
   ])
 
 
-
-
   const addNewUserHandler = (newUser) => {
     setDummyToDo((prevDummyToDo) => {
       return [...prevDummyToDo, newUser]
     })
   }
 
+  const usersFilter = (users) => {
+    setDummyToDo(users)
+  }
+
   return (
     <React.Fragment>
       <ToDoForm newUser={addNewUserHandler} />
-      <ToDoList toDo={dummyToDo} />
+      <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} />
     </React.Fragment>
 
   )
