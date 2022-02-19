@@ -1,4 +1,5 @@
 import { gsap } from "gsap"
+import classes from './App.module.scss'
 import React, { useState } from "react";
 import ToDoForm from './components/ToDoForm';
 import ToDoList from "./components/ToDoList";
@@ -29,10 +30,11 @@ function App() {
   }
 
   return (
-    <React.Fragment>
+
+    <div className={classes.pageWrapper}>
       <ToDoForm newUser={addNewUserHandler} />
       <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} />
-    </React.Fragment>
+    </div>
 
   )
 }

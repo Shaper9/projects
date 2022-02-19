@@ -1,0 +1,24 @@
+.toDoWrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 25em;
+    margin: 0 auto 0 auto;
+    margin-bottom: 3em;
+}
+
+
+.toDoForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Shizuru', cursive;
+}
+
+.btn{
+    margin: auto;
+    margin-top: 2em;
+}

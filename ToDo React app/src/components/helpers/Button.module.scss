@@ -1,5 +1,16 @@
-.submit-button{
+.submitButton{
     height: 20px;
-    max-width: 5em;
-    background-color: red;
+    width: 8em;
+    height: 2em;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid orangered;
+    font-weight: bold;
+    background-color: orangered;
+    color: white;
+}
+
+.submitButton:hover{
+    background-color: white;
+    color: black;
 }
