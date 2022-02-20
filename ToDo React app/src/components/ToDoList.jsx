@@ -5,7 +5,7 @@ import classes from './ToDoList.module.scss'
 const ToDoList = (props) => {
     return (
         <div className={classes.toDoListWrapper}>
-            {props.toDo.map(toDo => <ToDo key={toDo.id} activity={toDo.activity} date={toDo.date} type={toDo.type} id={toDo.id} allUsers={props.toDo} filteredUsers={props.filteredUsers} ></ToDo>)}
+            {props.toDo && props.toDo.map(toDo => <ToDo key={toDo.id} activity={toDo.activity} date={toDo.date} type={toDo.type} id={toDo.id} allUsers={props.toDo} filteredUsers={props.filteredUsers} ></ToDo>)}
         </div>
     )
 }

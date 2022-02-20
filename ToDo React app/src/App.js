@@ -1,6 +1,6 @@
 import { gsap } from "gsap"
 import classes from './App.module.scss'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToDoForm from './components/ToDoForm';
 import ToDoList from "./components/ToDoList";
 
@@ -8,16 +8,17 @@ import ToDoList from "./components/ToDoList";
 
 function App() {
 
-  const [dummyToDo, setDummyToDo] = useState([
-    {
-      id: (Math.random()).toString(),
-      activity: 'Wake up',
-      date: '2022-02-12',
-      type: 'Free time'
+  const [dummyToDo, setDummyToDo] = useState(null)
 
-    },
-  ])
+  useEffect(() => {
+    const rawData = window.localStorage.getItem('toDos')
+    const data = JSON.parse(rawData) || []
+    setDummyToDo(data)
+  }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem('toDos', JSON.stringify(dummyToDo))
+  }, [dummyToDo])
 
   const addNewUserHandler = (newUser) => {
     setDummyToDo((prevDummyToDo) => {
