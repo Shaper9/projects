@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import Button from './helpers/Button';
 import classes from './ToDoForm.module.scss'
+import ErrorMessage from './helpers/ErrorMessage';
+import Backdrop from './helpers/Backdrop';
 import { gsap } from 'gsap'
 
 const ToDoForm = (props) => {
@@ -20,8 +22,18 @@ const ToDoForm = (props) => {
         }
     }
 
+    const [isValid, setIsValid] = useState(true)
+    const errorHandler = (error) => {
+        setIsValid(error);
+    }
+
     const submitHandler = (event) => {
         event.preventDefault();
+        if (activityRef.current.value.length === 0 || activityRef.current.value.length > 15) {
+            activityRef.current.value = ''
+            return setIsValid(false)
+        }
+
         const newUser = newUserHandler(activityRef.current.value, dateRef.current.value, typeRef.current.value)
 
         // animation
@@ -51,6 +63,9 @@ const ToDoForm = (props) => {
                     <Button handleClick={submitHandler} className={classes.btn} ref={btnRef}>SUBMIT</Button>
                 </form>
             </div>
+            {/* Error message */}
+            {!isValid && <ErrorMessage errorHandler={errorHandler} />}
+            {!isValid && <Backdrop />}
         </React.Fragment>
     )
 }
