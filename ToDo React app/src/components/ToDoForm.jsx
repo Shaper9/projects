@@ -18,7 +18,8 @@ const ToDoForm = (props) => {
             id: (Math.random()).toString(),
             activity: activity,
             date: date,
-            type: type
+            type: type,
+            finished: false
         }
     }
 
@@ -29,7 +30,7 @@ const ToDoForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        if (activityRef.current.value.length === 0 || activityRef.current.value.length > 15) {
+        if (activityRef.current.value.length === 0 || activityRef.current.value.length > 15 || dateRef.current.value == "") {
             activityRef.current.value = ''
             return setIsValid(false)
         }
@@ -41,6 +42,10 @@ const ToDoForm = (props) => {
         tml.to(btnRef.current, { scaleX: 2, scaleY: 0.8 })
         tml.to(btnRef.current, { scale: 1, scaleY: 1, ease: "elastic.out(1, 0.2)" })
 
+        activityRef.current.value = ""
+        dateRef.current.value = ""
+
+        // console.log(newUser);
 
         return props.newUser(newUser)
     }

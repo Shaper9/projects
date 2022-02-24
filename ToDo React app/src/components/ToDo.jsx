@@ -7,19 +7,30 @@ import { gsap } from 'gsap';
 const ToDo = (props) => {
 
     const toDoRef = useRef();
-    const btnref = React.createRef();
+    const btnDelRef = React.createRef();
+    const btnFiniRef = React.createRef();
 
-    const mouseEnterHandle = () => {
-        gsap.to(btnref.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+    const mouseEnterHandleDel = () => {
+        gsap.to(btnDelRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
     }
-    const mouseLeaveHandler = () => {
-        gsap.to(btnref.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+    const mouseLeaveHandlerDel = () => {
+        gsap.to(btnDelRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+    }
+
+    const mouseEnterHandleFini = () => {
+        gsap.to(btnFiniRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+    }
+
+    const mouseLeaveHandlerFini = () => {
+        gsap.to(btnFiniRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
     }
 
     const timeline = gsap.timeline({ defaults: { duration: 0.75 } })
     useLayoutEffect(() => {
         timeline.fromTo(toDoRef.current, { x: -2000 }, { x: 0, duration: 1, ease: "bounce.out", delay: 0.5 })
-        timeline.fromTo(btnref.current, { opacity: 0 }, { opacity: 1, delay: 0.3 })
+        timeline.fromTo(btnDelRef.current, { opacity: 0 }, { opacity: 1, delay: 0.3 });
+        timeline.fromTo(btnFiniRef.current, { opacity: 0 }, { opacity: 1, delay: 0.3 }, "<1%")
+
     }, []);
 
     const allUsers = props.allUsers
@@ -41,19 +52,27 @@ const ToDo = (props) => {
 
     }
 
+    const isFinished = props.isFinished
+    function finishedHandler() {
+        props.isFinishedHandler(currentUserId)
+    }
 
     return (
         <React.Fragment>
-            <li className={classes.toDo} ref={toDoRef}>
+            <li className={`${classes.toDo} ${isFinished && classes.finished} `} ref={toDoRef}>
                 <div className={classes.listWrapper}>
                     <p>You need to: <span className={classes.font}>{props.activity}</span> </p>
                     <p>Date of activity: <span className={classes.font}>{props.date}</span></p>
                     <p>Type of activity: <span className={classes.font}>{props.type}</span></p>
                 </div>
 
-                <Button className={classes.btn} ref={btnref} handleClick={removeHandler} onMouseEnter={mouseEnterHandle} onMouseLeave={mouseLeaveHandler}>DELETE</Button>
+                <div className={classes.btnWrapper}>
+                    <Button className={classes.btn} ref={btnDelRef} handleClick={removeHandler} onMouseEnter={mouseEnterHandleDel} onMouseLeave={mouseLeaveHandlerDel}>DELETE</Button>
+
+                    <Button className={classes.btn} ref={btnFiniRef} onMouseEnter={mouseEnterHandleFini} onMouseLeave={mouseLeaveHandlerFini} handleClick={finishedHandler}>FINISHED</Button>
+                </div>
             </li>
-        </React.Fragment>
+        </React.Fragment >
     )
 }
 

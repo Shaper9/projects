@@ -10,10 +10,16 @@
     border-radius: 20px;
 }
 
+.btnWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
 .btn{
     background-color: #FFBC80;
     text-align: center;
     max-width: 6em;
+    margin: 1em 0 1em 0;
 }
 
 .font{
@@ -21,4 +27,8 @@
     font-weight: bold;
 }
 
+.finished{
+    background-color: greenyellow;
+    opacity: 50%;
+}
 

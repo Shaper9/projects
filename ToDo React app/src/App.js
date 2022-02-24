@@ -30,11 +30,24 @@ function App() {
     setDummyToDo(users)
   }
 
+  const finishedHandler = (user) => {
+    const newToDos = dummyToDo.map((toDo) => {
+      if (toDo.id === user.id) {
+        toDo.finished = true
+        window.localStorage.setItem('toDos', JSON.stringify(dummyToDo)) // Should use useEffect but....
+      }
+    })
+    return setDummyToDo((prevDummyToDo) => {
+      return [...prevDummyToDo] // Make page re-render to make changes visible instant
+    })
+  }
+
+
   return (
 
     <div className={classes.pageWrapper}>
       <ToDoForm newUser={addNewUserHandler} />
-      <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} />
+      <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} />
     </div>
 
   )
