@@ -39,7 +39,7 @@ function App() {
       }
     })
     return setDummyToDo((prevDummyToDo) => {
-      return [...prevDummyToDo] // Make page re-render to make changes visible instant
+      return [...prevDummyToDo] // Make page re-render to make changes visible instant, there is other way
     })
   }
 
