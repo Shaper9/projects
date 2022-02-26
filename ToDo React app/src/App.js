@@ -16,6 +16,7 @@ function App() {
     setDummyToDo(data)
   }, []);
 
+
   useEffect(() => {
     window.localStorage.setItem('toDos', JSON.stringify(dummyToDo))
   }, [dummyToDo])
@@ -31,10 +32,10 @@ function App() {
   }
 
   const finishedHandler = (user) => {
-    const newToDos = dummyToDo.map((toDo) => {
+    dummyToDo.map((toDo) => {
       if (toDo.id === user.id) {
         toDo.finished = true
-        window.localStorage.setItem('toDos', JSON.stringify(dummyToDo)) // Should use useEffect but....
+        return window.localStorage.setItem('toDos', JSON.stringify(dummyToDo)) // Should use useEffect but....
       }
     })
     return setDummyToDo((prevDummyToDo) => {

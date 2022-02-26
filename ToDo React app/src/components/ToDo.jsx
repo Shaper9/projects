@@ -69,7 +69,7 @@ const ToDo = (props) => {
                 <div className={classes.btnWrapper}>
                     <Button className={classes.btn} ref={btnDelRef} handleClick={removeHandler} onMouseEnter={mouseEnterHandleDel} onMouseLeave={mouseLeaveHandlerDel}>DELETE</Button>
 
-                    <Button className={classes.btn} ref={btnFiniRef} onMouseEnter={mouseEnterHandleFini} onMouseLeave={mouseLeaveHandlerFini} handleClick={finishedHandler}>FINISHED</Button>
+                    {!isFinished && <Button className={classes.btn} ref={btnFiniRef} onMouseEnter={mouseEnterHandleFini} onMouseLeave={mouseLeaveHandlerFini} handleClick={finishedHandler}>FINISHED</Button>}
                 </div>
             </li>
         </React.Fragment >
