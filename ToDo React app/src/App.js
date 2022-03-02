@@ -1,8 +1,9 @@
 import { gsap } from "gsap"
 import classes from './App.module.scss'
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import ToDoForm from './components/ToDoForm';
 import ToDoList from "./components/ToDoList";
+import AuthContext from './components/context/AuthContext'
 
 
 
@@ -47,14 +48,17 @@ function App() {
     })
   }
 
+  const ctx = useContext(AuthContext)
+
+
 
   return (
-
     <div className={classes.pageWrapper} ref={pageWrapperRef}>
       <ToDoForm newUser={addNewUserHandler} />
       <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} />
+      <button onClick={ctx.isLoggedInHandler}></button>
+      {ctx.isLoggedIn && <div>radi</div>}
     </div>
-
   )
 }
 
