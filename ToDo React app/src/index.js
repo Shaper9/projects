@@ -7,6 +7,7 @@ import { AuthContextProvider } from './components/context/AuthContext';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* CONTEXT PROVIDER  */}
     <AuthContextProvider>
       <App />
     </AuthContextProvider>

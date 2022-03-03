@@ -11,8 +11,7 @@ export const AuthContextProvider = (props) => {
     const loginHandler = () => {
         if (isLoggedIn === true) {
             setIsLoggedIn(false)
-        }
-        if (isLoggedIn === false) {
+        } else {
             setIsLoggedIn(true)
         }
     }
