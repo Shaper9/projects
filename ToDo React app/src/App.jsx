@@ -52,29 +52,33 @@ function App() {
 
   // Fun fact fetch
   const [funFact, setFunFact] = useState("no data");
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    async function getData() {
-      console.log("render asinhrone funkcije");
-      try {
-        const rawData = await fetch('https://api.aakhilv.me/fun/facts')
-        if (!rawData.ok) {
-          throw new Error(' HTTP error ')
-        }
-        const usableFact = await rawData.json();
-        setFunFact(usableFact)
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setIsLoading(false)
+  async function getData() {
+    console.log("render asinhrone funkcije");
+    try {
+      setIsLoading(true)
+      const rawData = await fetch('https://api.aakhilv.me/fun/facts')
+      if (!rawData.ok) {
+        throw new Error(`HTTP status ${rawData.status}`)
       }
+      const usableFact = await rawData.json();
+      setFunFact(usableFact)
+    } catch (err) {
+      console.log(err.message);
+    } finally {
+      setIsLoading(false)
     }
+  }
+  useEffect(() => {
     getData()
   }, [])
 
-  console.log(funFact);
+  console.log(funFact.data);
 
+  const newFact = () => {
+    getData()
+  }
 
 
 
@@ -83,8 +87,9 @@ function App() {
       <ToDoForm newUser={addNewUserHandler} />
       <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} />
       {isLoading && <div>LOADING FUN FACT</div>}
-      <div>{funFact.data}</div>
-      <button onClick={ctx.isLoggedInHandler}></button>
+      {!isLoading && <div>{funFact.data}</div>}
+      <button onClick={newFact}>new fact</button>
+      <button onClick={ctx.isLoggedInHandler}>context test</button>
       {ctx.isLoggedIn && <div>radi</div>}
     </div>
   )
