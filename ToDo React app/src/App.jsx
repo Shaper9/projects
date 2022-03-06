@@ -74,7 +74,6 @@ function App() {
     getData()
   }, [])
 
-  console.log(funFact.data);
 
   const newFact = () => {
     getData()
