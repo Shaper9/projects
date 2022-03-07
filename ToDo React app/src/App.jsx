@@ -4,6 +4,8 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import ToDoForm from './components/ToDoForm';
 import ToDoList from "./components/ToDoList";
 import AuthContext from './components/context/AuthContext'
+import { Routes, Route } from 'react-router-dom'
+import Pages from "./components/pages/Pages";
 
 
 
@@ -90,6 +92,8 @@ function App() {
       <button onClick={newFact}>new fact</button>
       <button onClick={ctx.isLoggedInHandler}>context test</button>
       {ctx.isLoggedIn && <div>radi</div>}
+
+      <Pages />
     </div>
   )
 }
