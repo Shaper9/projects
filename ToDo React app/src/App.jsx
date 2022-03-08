@@ -1,9 +1,12 @@
 import { gsap } from "gsap"
 import classes from './App.module.scss'
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useRef, useContext, useCallback } from "react";
 import ToDoForm from './components/ToDoForm';
 import ToDoList from "./components/ToDoList";
+
 import AuthContext from './components/context/AuthContext'
+import useFetch from "./components/hooks/use-fetch";
+
 import { Routes, Route } from 'react-router-dom'
 import Pages from "./components/pages/Pages";
 
@@ -57,7 +60,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   async function getData() {
-    console.log("render asinhrone funkcije");
     try {
       setIsLoading(true)
       const rawData = await fetch('https://api.aakhilv.me/fun/facts')
@@ -80,8 +82,20 @@ function App() {
   const newFact = () => {
     getData()
   }
+  // ************************ CUSTOM HOOK ******************************
+  const [customHook, setCustomHook] = useState("no data")
 
+  const func = useCallback((data) => {
+    setCustomHook(data)
+  }, [])
 
+  const data = useFetch({ url: "https://api.aakhilv.me/fun/facts" }, func)
+  useEffect(() => {
+    data.sendRequest()
+  }, [func])
+
+  console.log(customHook.data);
+  // *******************************************************************
 
   return (
     <div className={classes.pageWrapper} ref={pageWrapperRef}>
