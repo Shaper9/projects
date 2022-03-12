@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react'
 
-const useFetch = (config, func) => {
+const useFetch = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    const sendRequest = useCallback(async () => {
+    const sendRequest = useCallback(async (config, func) => {
         setIsLoading(true);
         setError(null);
         try {

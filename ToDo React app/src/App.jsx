@@ -85,14 +85,15 @@ function App() {
   // ************************ CUSTOM HOOK ******************************
   const [customHook, setCustomHook] = useState("no data")
 
-  const func = useCallback((data) => {
-    setCustomHook(data)
-  }, [])
+  const { isLoading: isFetchLoading, error, sendRequest } = useFetch()  // vadimo ceo return iz custom hooka
 
-  const data = useFetch({ url: "https://api.aakhilv.me/fun/facts" }, func)
   useEffect(() => {
-    data.sendRequest()
-  }, [func])
+    const func = (data) => {
+      setCustomHook(data)
+    }
+    sendRequest({ url: "https://api.aakhilv.me/fun/facts" }, func) //prosledjujemo parametre u funkciju
+  }, [sendRequest])
+
 
   console.log(customHook.data);
   // *******************************************************************
