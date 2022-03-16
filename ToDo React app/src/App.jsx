@@ -18,93 +18,78 @@ function App() {
   const pageWrapperRef = useRef()
 
   useEffect(() => {
-    const rawData = window.localStorage.getItem('toDos')
-    const data = JSON.parse(rawData) || []
-    setDummyToDo(data)
+    const getDataFunc = (data) => {
+      // console.log(data);
+      const fetchedTodos = []
+      for (const key in data) {
+        fetchedTodos.push(data[key])
+        // console.log(Object.keys(data));
+        data[key].id = key
+      }
+      setDummyToDo(fetchedTodos)
+
+      // console.log(Object.keys(data));
+    }
+    sendRequest({ url: 'https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo.json' }, getDataFunc)
+
+
 
     // Page enterence Animation
     gsap.fromTo(pageWrapperRef.current, { opacity: 0 }, { opacity: 1, duration: 0.500 })
   }, []);
 
 
-  useEffect(() => {
-    window.localStorage.setItem('toDos', JSON.stringify(dummyToDo))
-  }, [dummyToDo])
-
-  const addNewUserHandler = (newUser) => {
+  const [postHook, setPostHook] = useState("no data")
+  const addNewUserHandler = (newToDo) => {
     setDummyToDo((prevDummyToDo) => {
-      return [...prevDummyToDo, newUser]
+      return [...prevDummyToDo, newToDo]
     })
+
+    // Post request for new todo
+
+    const funcPostData = (data) => {
+      setPostHook(data)
+      newToDo.id = data.name // setting firebase ID 
+    }
+    sendRequest({ url: 'https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo.json', method: 'POST', headers: { 'Content-Type': 'application/json' }, body: newToDo }, funcPostData)
   }
 
   const usersFilter = (users) => {
     setDummyToDo(users)
   }
 
-  const finishedHandler = (user) => {
+  const finishedHandler = (finishedUser) => {
+    const updateDataFunc = (data) => {
+      console.log(data);
+    }
     dummyToDo.map((toDo) => {
-      if (toDo.id === user.id) {
-        toDo.finished = true
-        return window.localStorage.setItem('toDos', JSON.stringify(dummyToDo)) // Should use useEffect but....
+      if (toDo.id === finishedUser.id) {
+        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo/${finishedUser.id}.json`, method: "PUT", headers: { 'Content-Type': 'application/json' }, body: { activity: finishedUser.activity, date: finishedUser.date, id: finishedUser.id, type: finishedUser.type, finished: true } }, updateDataFunc)
       }
     })
-    return setDummyToDo((prevDummyToDo) => {
-      return [...prevDummyToDo] // Make page re-render to make changes visible instant, there is other way
+
+    dummyToDo.map((todo) => {
+      if (todo.id === finishedUser.id) {
+        return todo.finished = true
+      }
+    })
+
+    // ID return reposnse
+    setDummyToDo(prevDummyToDo => {
+      return [...prevDummyToDo]
     })
   }
 
   const ctx = useContext(AuthContext)
 
-  // Fun fact fetch
-  const [funFact, setFunFact] = useState("no data");
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function getData() {
-    try {
-      setIsLoading(true)
-      const rawData = await fetch('https://api.aakhilv.me/fun/facts')
-      if (!rawData.ok) {
-        throw new Error(`HTTP status ${rawData.status}`)
-      }
-      const usableFact = await rawData.json();
-      setFunFact(usableFact)
-    } catch (err) {
-      console.log(err.message);
-    } finally {
-      setIsLoading(false)
-    }
-  }
-  useEffect(() => {
-    getData()
-  }, [])
-
-
-  const newFact = () => {
-    getData()
-  }
-  // ************************ CUSTOM HOOK ******************************
-  const [customHook, setCustomHook] = useState("no data")
-
+  // *************************************************** CUSTOM HOOK ***************************************************************
   const { isLoading: isFetchLoading, error, sendRequest } = useFetch()  // vadimo ceo return iz custom hooka
-
-  useEffect(() => {
-    const func = (data) => {
-      setCustomHook(data)
-    }
-    sendRequest({ url: "https://api.aakhilv.me/fun/facts" }, func) //prosledjujemo parametre u funkciju
-  }, [sendRequest])
-
-
-  console.log(customHook.data);
-  // *******************************************************************
+  // *******************************************************************************************************************************
 
   return (
     <div className={classes.pageWrapper} ref={pageWrapperRef}>
       <ToDoForm newUser={addNewUserHandler} />
       <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} />
-      {isLoading && <div>LOADING FUN FACT</div>}
-      {!isLoading && <div>{funFact.data}</div>}
-      <button onClick={newFact}>new fact</button>
       <button onClick={ctx.isLoggedInHandler}>context test</button>
       {ctx.isLoggedIn && <div>radi</div>}
 

@@ -57,7 +57,7 @@ const ToDoForm = (props) => {
                 <form className={classes.toDoForm}>
                     <input type="text" name='name' placeholder='Enter your activity here' ref={activityRef} />
                     <label htmlFor="date" >When do you need to do this activity:</label>
-                    <input type="text" name='date' type='date' ref={dateRef} />
+                    <input name='date' type='date' ref={dateRef} />
 
                     <label htmlFor="type">What type of activity:</label>
                     <select name="type" id="type" ref={typeRef}>

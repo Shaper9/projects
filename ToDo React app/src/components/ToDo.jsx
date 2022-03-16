@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
+import React, { useRef, useEffect, useState, useLayoutEffect, useCallback } from "react";
 import classes from './ToDo.module.scss'
 import Button from "./helpers/Button";
 import { gsap } from 'gsap';
+import useFetch from "./hooks/use-fetch";
 
 
 const ToDo = (props) => {
@@ -35,20 +36,29 @@ const ToDo = (props) => {
 
     const allUsers = props.allUsers
     const currentUserId = props.id
+    const { isLoading: isFetchLoading, error, sendRequest } = useFetch()
 
+    // REMOVING USERS
     // console.log(filteredUsers);
     const removeHandler = () => {
-        const newFilterUsers = allUsers.filter((user) => {
+        const delFuncHandler = (data) => {
+            console.log(data);
+        }
+
+        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo/${currentUserId}.json`, method: "DELETE", head: {} }, delFuncHandler)
+
+        const filteredUsers = allUsers.filter(user => {
             return user.id !== currentUserId
         })
+        setTimeout(() => {
+            props.filteredUsers(filteredUsers)
+        }, 500)
+
+
 
         // Animacija
         gsap.to(toDoRef.current, { x: 2000, duration: 0.75 })
 
-        setTimeout(() => {
-            props.filteredUsers(newFilterUsers)
-
-        }, 500)
 
     }
 
