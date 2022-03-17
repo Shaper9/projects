@@ -21,9 +21,9 @@ function App() {
     const getDataFunc = (data) => {
       // console.log(data);
       const fetchedTodos = []
+      // data.forEach(item => console.log(item))
       for (const key in data) {
         fetchedTodos.push(data[key])
-        // console.log(Object.keys(data));
         data[key].id = key
       }
       setDummyToDo(fetchedTodos)
@@ -64,7 +64,7 @@ function App() {
     }
     dummyToDo.map((toDo) => {
       if (toDo.id === finishedUser.id) {
-        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo/${finishedUser.id}.json`, method: "PUT", headers: { 'Content-Type': 'application/json' }, body: { activity: finishedUser.activity, date: finishedUser.date, id: finishedUser.id, type: finishedUser.type, finished: true } }, updateDataFunc)
+        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo/${finishedUser.id}.json`, method: "PUT", headers: { 'Content-Type': 'application/json' }, body: { activity: finishedUser.activity, date: finishedUser.date, type: finishedUser.type, finished: true } }, updateDataFunc)
       }
     })
 

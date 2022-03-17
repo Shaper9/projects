@@ -15,14 +15,13 @@ const ToDoForm = (props) => {
 
     const newUserHandler = (activity, date, type) => {
         return {
-            //  Change  ID 
-            id: (Math.random()).toString(),
             activity: activity,
             date: date,
             type: type,
             finished: false
         }
     }
+
     const [isValid, setIsValid] = useState(true)
     const errorHandler = (error) => {
         setIsValid(error);
