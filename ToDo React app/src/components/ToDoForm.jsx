@@ -44,8 +44,6 @@ const ToDoForm = (props) => {
         activityRef.current.value = ""
         dateRef.current.value = ""
 
-        // console.log(newUser);
-
         return props.newUser(newUser)
     }
 
