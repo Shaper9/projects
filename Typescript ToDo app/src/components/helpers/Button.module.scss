@@ -1,0 +1,16 @@
+.submitButton{
+    height: 20px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid orangered;
+    font-weight: bold;
+    background-color: orangered;
+    color: white;
+}
+
+.submitButton:hover{
+    background-color: white;
+    color: black;
+}
