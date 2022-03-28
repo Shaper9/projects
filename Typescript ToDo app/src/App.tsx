@@ -24,7 +24,7 @@ const App: React.FC<{ filteredId: string }> = () => {
     finished: boolean
   }
 
-  const [dummyToDo, setDummyToDo] = useState<ToDo[]>()
+  const [dummyToDo, setDummyToDo] = useState<ToDo[]>([])
   const pageWrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const App: React.FC<{ filteredId: string }> = () => {
 
   // const [postHook, setPostHook] = useState<{ name: string } | string>("no data")
   const addNewUserHandler = (newToDo: ToDo) => {
-    setDummyToDo((prevDummyToDo: any) => {
+    setDummyToDo((prevDummyToDo: ToDo[]) => {
       return [...prevDummyToDo, newToDo]
     })
 
@@ -86,7 +86,7 @@ const App: React.FC<{ filteredId: string }> = () => {
     })
 
     // ID return reposnse
-    setDummyToDo((prevDummyToDo: any) => {
+    setDummyToDo((prevDummyToDo: ToDo[]) => {
       return [...prevDummyToDo]
     })
   }
