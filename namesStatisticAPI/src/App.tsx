@@ -27,6 +27,10 @@ function App() {
       setChartUrl("")
       setShowImg(true)
       setShowText(false)
+      if (nameInputRef.current!.value.length < 2) {
+        setLoading(false)
+        return alert("cannot find your name in database")
+      }
       const nameResponse = await axios.get(`https://api.nationalize.io/?name=${name}`)
       if (nameResponse.data.country.length < 1) {
         setLoading(false)
@@ -74,7 +78,6 @@ function App() {
         </form>
         <div className='response'>
           <p className='main-para' hidden={!showText}>{`Sowing results for: ${searchedname}`}</p>
-          {/* {loading && imgLoading && <p>LOADING</p>} */}
           {/* @ts-ignore */}
           <ClipLoader loading={loading && imgLoading} />
           <img className='main-img' src={chartUrl} hidden={!showImg && !imgLoading} onLoad={onLoadHandler}></img>
