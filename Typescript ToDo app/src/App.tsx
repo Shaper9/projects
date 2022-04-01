@@ -31,14 +31,11 @@ const App: React.FC<{ filteredId: string }> = () => {
     const getDataFunc = (data: ToDo[]) => {
       // console.log(data);
       const fetchedTodos = []
-      // data.forEach(item => console.log(item))
       for (const key in data) {
         fetchedTodos.push(data[key])
         data[key].id = key
       }
       setDummyToDo(fetchedTodos)
-
-      // console.log(Object.keys(data));
     }
     sendRequest({ url: 'https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo.json' }, getDataFunc)
 

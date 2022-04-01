@@ -57,12 +57,12 @@ const ToDoForm: React.FC<{ newUser: (user: { id?: string, activity: string, date
             <div className={classes.toDoWrapper}>
                 <p className={classes.formTitle}>To do list</p>
                 <form className={classes.toDoForm}>
-                    <input type="text" name='name' placeholder='Enter your activity here' ref={activityRef} />
+                    <input type="text" name='name' placeholder='Enter your activity here' ref={activityRef} className={classes.input} />
                     <label htmlFor="date" >When do you need to do this activity:</label>
-                    <input name='date' type='date' ref={dateRef} />
+                    <input name='date' type='date' ref={dateRef} className={classes.input} />
 
                     <label htmlFor="type">What type of activity:</label>
-                    <select name="type" id="type" ref={typeRef}>
+                    <select name="type" id="type" ref={typeRef} className={classes.input}>
                         <option value="Job" >Job</option>
                         <option value="Hobby" >Hobby</option>
                         <option value="Free-time">Free time</option>

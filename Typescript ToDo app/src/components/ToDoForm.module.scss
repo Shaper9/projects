@@ -1,24 +1,30 @@
-.toDoWrapper{
+.toDoWrapper {
     display: flex;
     flex-direction: column;
     max-width: 25em;
     margin: 0 auto 0 auto;
     margin-bottom: 3em;
-}
 
+    .formTitle {
+        text-align: center;
+        font-weight: bold;
+        font-family: 'Shizuru', cursive;
+    }
 
-.toDoForm{
-    display: flex;
-    flex-direction: column;
-}
+    .toDoForm {
+        display: flex;
+        flex-direction: column;
 
-.formTitle{
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Shizuru', cursive;
-}
+        .btn {
+            margin: auto;
+            margin-top: 2em;
+        }
 
-.btn{
-    margin: auto;
-    margin-top: 2em;
+        .input {
+            border: none;
+            border-bottom: 2px solid black;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+        }
+    }
 }
