@@ -8,10 +8,7 @@ import { css } from "@emotion/react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { Routes, Route } from 'react-router-dom'
 
-
-
 import useFetch from "./components/hooks/use-fetch";
-
 
 import LoginCard from "./components/LoginCard";
 import LogoutButton from "./components/auth0/LogoutButton";
@@ -43,6 +40,7 @@ const App: React.FC<{ filteredId: string }> = () => {
 
   let ovoJeLoggedUser: loggedInUserObject;
 
+
   const gotData = async () => {
     await sendRequest({ url: "https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts.json" }, gotDataFunc)
 
@@ -58,7 +56,20 @@ const App: React.FC<{ filteredId: string }> = () => {
     }
 
     ovoJeLoggedUser = allUsers.find((findUser: any) => findUser.email == user?.email)
+    if (ovoJeLoggedUser === undefined) {
+      // @ts-ignore
+      ovoJeLoggedUser = { email: user?.email }
+      sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts.json`, method: 'POST', headers: { 'Content-Type': 'application/json' }, body: { email: user?.email } }, addedNewUserFetchFunc)
 
+
+
+    } else {
+      setLoggedInUser(ovoJeLoggedUser)
+    }
+  }
+
+  const addedNewUserFetchFunc = (data: any) => {
+    ovoJeLoggedUser.id = data.name
     setLoggedInUser(ovoJeLoggedUser)
   }
 
@@ -128,7 +139,7 @@ const App: React.FC<{ filteredId: string }> = () => {
 
   // *************************************************** CUSTOM HOOK ***************************************************************
   // @ts-ignore
-  const { isLoading: isFetchLoading, error, sendRequest } = useFetch()  // vadimo ceo return iz custom hooka
+  const { isLoading: isFetchLoading, error, sendRequest } = useFetch()
   // *******************************************************************************************************************************
 
   const override = css`
