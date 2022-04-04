@@ -1,4 +1,38 @@
-.pageWrapper{
+.pageWrapper {
     padding: 20px;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logoutButton {
+        position: absolute;
+        top: 4rem;
+        right: 5rem;
+        background-color: #FFBC80;
+        text-align: center;
+        max-width: 6em;
+        border: none;
+        border-radius: 10px;
+        border: 2px solid orangered;
+        font-weight: bold;
+        background-color: orangered;
+        color: white;
+        cursor: pointer;
+    }
+
+    .logoutButton:hover {
+        content: "X";
+        background-color: white;
+        color: black;
+    }
+}
+
+
+
+.userUsername {
+    position: absolute;
+    top: 1rem;
+    right: 5rem;
 }

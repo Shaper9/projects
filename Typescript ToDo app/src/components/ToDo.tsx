@@ -14,7 +14,7 @@ interface ToDo {
     finished: boolean
 }
 
-const ToDo: React.FC<{ key: string, activity: string, date: string, type: string, id: string, allUsers: ToDo[] | undefined, filteredUsers: any, isFinished: boolean, isFinishedHandler: (id: string) => void, }> = (props) => {
+const ToDo: React.FC<{ key: string, activity: string, date: string, type: string, id: string, allUsers: ToDo[] | undefined, filteredUsers: any, isFinished: boolean, isFinishedHandler: (id: string) => void, loggedInUser: string | undefined }> = (props) => {
 
     const toDoRef = useRef<HTMLLIElement>(null);
     const btnDelRef = React.createRef<HTMLButtonElement>();
@@ -49,13 +49,12 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
     const { isLoading: isFetchLoading, error, sendRequest } = useFetch()
 
     // REMOVING USERS
-    // console.log(filteredUsers);
     const removeHandler = () => {
         const delFuncHandler = (data: any) => {
             console.log(data);
         }
 
-        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/todo/${currentUserId}.json`, method: "DELETE", head: {} }, delFuncHandler)
+        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts/${props.loggedInUser}/todo/${currentUserId}.json`, method: "DELETE", head: {} }, delFuncHandler)
 
         const filteredUsers = allUsers?.filter(user => {
             return user.id !== currentUserId
@@ -63,7 +62,6 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
         setTimeout(() => {
             props.filteredUsers(filteredUsers)
         }, 500)
-
 
 
         // Animacija

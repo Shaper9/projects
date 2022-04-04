@@ -11,7 +11,7 @@ interface ToDoUser {
     finished: boolean
 }
 
-const ToDoList: React.FC<{ toDo: ToDoUser[] | undefined, filteredId: (finishedUser: ToDoUser | any) => void, filteredUsers: (user: ToDoUser[]) => void }> = (props) => {
+const ToDoList: React.FC<{ toDo: ToDoUser[] | undefined, filteredId: (finishedUser: ToDoUser | any) => void, filteredUsers: (user: ToDoUser[]) => void, loggedInUser: string | undefined }> = (props) => {
 
     let allUsers = props.toDo
 
@@ -25,7 +25,7 @@ const ToDoList: React.FC<{ toDo: ToDoUser[] | undefined, filteredId: (finishedUs
 
     return (
         <div className={classes.toDoListWrapper}>
-            {props.toDo && props.toDo.map(toDo => <ToDo key={toDo.id} activity={toDo.activity} date={toDo.date} type={toDo.type} id={toDo.id} allUsers={props.toDo} filteredUsers={props.filteredUsers} isFinished={toDo.finished} isFinishedHandler={finishedHandler}></ToDo>)}
+            {props.toDo && props.toDo.map(toDo => <ToDo key={toDo.id} activity={toDo.activity} date={toDo.date} type={toDo.type} id={toDo.id} allUsers={props.toDo} filteredUsers={props.filteredUsers} isFinished={toDo.finished} isFinishedHandler={finishedHandler} loggedInUser={props.loggedInUser}></ToDo>)}
         </div>
     )
 }

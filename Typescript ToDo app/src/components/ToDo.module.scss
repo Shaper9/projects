@@ -1,4 +1,4 @@
-.toDo{
+.toDo {
     list-style: none;
     background-color: #FF9F45;
     text-align: center;
@@ -10,25 +10,25 @@
     border-radius: 20px;
 }
 
-.btnWrapper{
+.btnWrapper {
     display: flex;
     flex-direction: column;
 }
 
-.btn{
+.btn {
     background-color: #FFBC80;
     text-align: center;
     max-width: 6em;
     margin: 1em 0 1em 0;
 }
 
-.font{
-    font-family: "Shizuru",cursive;
+.font {
+    font-family: "Shizuru", cursive;
     font-weight: bold;
+    margin-right: 5rem;
 }
 
-.finished{
+.finished {
     background-color: #adff2f;
     opacity: 50%;
 }
-

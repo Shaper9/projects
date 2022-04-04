@@ -55,7 +55,7 @@ const ToDoForm: React.FC<{ newUser: (user: { id?: string, activity: string, date
     return (
         <React.Fragment>
             <div className={classes.toDoWrapper}>
-                <p className={classes.formTitle}>To do list</p>
+                <p className={classes.formTitle}>ToDo maker</p>
                 <form className={classes.toDoForm}>
                     <input type="text" name='name' placeholder='Enter your activity here' ref={activityRef} className={classes.input} />
                     <label htmlFor="date" >When do you need to do this activity:</label>

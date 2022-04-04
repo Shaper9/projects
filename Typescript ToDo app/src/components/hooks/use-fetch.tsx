@@ -1,12 +1,5 @@
 import { useState, useCallback } from 'react'
 
-// @ts-ignore
-type configType = {
-    url: string;
-    method: string | null;
-    headers: { "content-type": string } | {};
-    body: any | null;
-}
 const useFetch = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
@@ -42,7 +35,7 @@ const useFetch = () => {
         error: error,
         sendRequest: sendRequest
     }
-    // Needs RETURN at the end of a component, because in the end it is just a function
+    // Needs RETURN at the end of a component
 }
 
 
