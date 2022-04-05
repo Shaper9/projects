@@ -15,7 +15,7 @@ import LogoutButton from "./components/auth0/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-const App: React.FC<{ filteredId: string }> = () => {
+const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
 
 
   const { user, isAuthenticated, isLoading } = useAuth0()
@@ -60,9 +60,6 @@ const App: React.FC<{ filteredId: string }> = () => {
       // @ts-ignore
       ovoJeLoggedUser = { email: user?.email }
       sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts.json`, method: 'POST', headers: { 'Content-Type': 'application/json' }, body: { email: user?.email } }, addedNewUserFetchFunc)
-
-
-
     } else {
       setLoggedInUser(ovoJeLoggedUser)
     }
@@ -91,7 +88,6 @@ const App: React.FC<{ filteredId: string }> = () => {
   }, [isAuthenticated]);
 
 
-
   const addNewUserHandler = (newToDo: ToDo) => {
     setDummyToDo((prevDummyToDo: ToDo[]) => {
       return [...prevDummyToDo, newToDo]
@@ -99,16 +95,13 @@ const App: React.FC<{ filteredId: string }> = () => {
 
 
     // Post request for new todo
-
     const funcPostData = (data: { name: string }) => {
       // setPostHook(data)
-      newToDo.id = data.name // setting firebase ID 
+      newToDo.id = data.name // setting local ID to be = as a firebase ID 
     }
 
     sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts/${loggedInUser?.id}/todo.json`, method: 'POST', headers: { 'Content-Type': 'application/json' }, body: newToDo }, funcPostData)
   }
-
-
 
 
   const usersFilter = (users: ToDo[]) => {
@@ -142,6 +135,39 @@ const App: React.FC<{ filteredId: string }> = () => {
   const { isLoading: isFetchLoading, error, sendRequest } = useFetch()
   // *******************************************************************************************************************************
 
+  let toDoNeedsToBeUpdated: ToDo | undefined;
+  const updateToDoHandler = (updatedToDo: any) => {
+    console.log(updatedToDo);
+
+    toDoNeedsToBeUpdated = dummyToDo.find(user => user.id === updatedToDo[0].id)
+    toDoNeedsToBeUpdated!.activity = updatedToDo[0].activity
+    toDoNeedsToBeUpdated!.date = updatedToDo[0].date
+    toDoNeedsToBeUpdated!.type = updatedToDo[0].type
+    console.log(dummyToDo);
+
+    let updatedDummyToDos = dummyToDo
+    for (const key in dummyToDo) {
+      if (dummyToDo[key].id === updatedToDo[1]) {
+        // @ts-ignore
+        updatedDummyToDos[key] = toDoNeedsToBeUpdated
+        setDummyToDo(updatedDummyToDos)
+        setDummyToDo(prevstate => [...prevstate])
+
+        const updatedToDoFunc = (response: string) => {
+          console.log(response);
+
+        }
+
+        sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts/${loggedInUser?.id}/todo/${updatedToDo[1]}.json`, method: "PUT", headers: { 'Content-Type': 'application/json' }, body: { activity: toDoNeedsToBeUpdated!.activity, date: toDoNeedsToBeUpdated!.date, type: toDoNeedsToBeUpdated!.type, finished: false } }, updatedToDoFunc)
+      }
+    }
+
+
+  }
+
+
+
+
   const override = css`
   margin-top: 20rem;
   height:5rem;
@@ -156,7 +182,7 @@ const App: React.FC<{ filteredId: string }> = () => {
 
       {isLoading && <PulseLoader css={override} />}
       {(!isLoading && isAuthenticated) && <ToDoForm newUser={addNewUserHandler} />}
-      {isAuthenticated && <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} loggedInUser={loggedInUser?.id} />}
+      {isAuthenticated && <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} loggedInUser={loggedInUser?.id} updatedToDo={updateToDoHandler} />}
 
       {/* ROUTES */}
       <Routes>
