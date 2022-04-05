@@ -155,18 +155,12 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
 
         const updatedToDoFunc = (response: string) => {
           console.log(response);
-
         }
 
         sendRequest({ url: `https://test-bae4b-default-rtdb.europe-west1.firebasedatabase.app/people/accounts/${loggedInUser?.id}/todo/${updatedToDo[1]}.json`, method: "PUT", headers: { 'Content-Type': 'application/json' }, body: { activity: toDoNeedsToBeUpdated!.activity, date: toDoNeedsToBeUpdated!.date, type: toDoNeedsToBeUpdated!.type, finished: false } }, updatedToDoFunc)
       }
     }
-
-
   }
-
-
-
 
   const override = css`
   margin-top: 20rem;

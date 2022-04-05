@@ -8,6 +8,7 @@
     padding: 0 3em 0 3em;
     margin: 1em 0 1em 0;
     border-radius: 20px;
+    border: 1px solid black;
 }
 
 .btnWrapper {
@@ -19,7 +20,28 @@
     background-color: #FFBC80;
     text-align: center;
     max-width: 6em;
-    margin: 1em 0 1em 0;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.btnFini {
+    height: 20px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid orangered;
+    font-weight: bold;
+    background-color: orangered;
+    color: white;
+    background-color: #FFBC80;
+    text-align: center;
+    max-width: 6em;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.btnFini:hover {
+    background-color: white;
+    color: black;
 }
 
 .font {
