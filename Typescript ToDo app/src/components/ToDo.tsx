@@ -7,6 +7,7 @@ import useFetch from "./hooks/use-fetch";
 
 
 
+
 interface ToDo {
     id?: string;
     activity: string;
@@ -15,7 +16,7 @@ interface ToDo {
     finished: boolean
 }
 
-const ToDo: React.FC<{ key: string, activity: string, date: string, type: string, id: string, allUsers: ToDo[] | undefined, filteredUsers: any, isFinished: boolean, isFinishedHandler: (id: string) => void, loggedInUser: string | undefined, updatedToDo: any }> = (props) => {
+const ToDo: React.FC<{ key: string, activity: string, date: string, type: string, id: string, allUsers: ToDo[] | undefined, filteredUsers: any, isFinished: boolean, isFinishedHandler: (id: string) => void, loggedInUser: string | undefined, updatedToDo: [ToDo, string] | any }> = (props) => {
 
     const toDoRef = useRef<HTMLLIElement>(null);
     const btnDelRef = React.createRef<HTMLButtonElement>();
@@ -23,33 +24,41 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
     const changeButtonRef = React.createRef<HTMLButtonElement>()
     const applyButtonRef = React.createRef<HTMLButtonElement>()
 
+    const mouseEnterAni = (buttonRef: any) => {
+        gsap.to(buttonRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+    }
+    const mouseLeaveAni = (buttonRef: any) => {
+        gsap.to(buttonRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+    }
+
     const mouseEnterHandleDel = () => {
-        gsap.to(btnDelRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+        mouseEnterAni(btnDelRef)
     }
     const mouseLeaveHandlerDel = () => {
-        gsap.to(btnDelRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+        mouseLeaveAni(btnDelRef)
     }
 
     const mouseEnterHandleFini = () => {
-        gsap.to(btnFiniRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+        mouseEnterAni(btnFiniRef)
     }
 
     const mouseLeaveHandlerFini = () => {
-        gsap.to(btnFiniRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+        mouseLeaveAni(btnFiniRef)
     }
 
     const mouseEnterHandleCH = () => {
-        gsap.to(changeButtonRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+        mouseEnterAni(changeButtonRef)
+
     }
     const mouseLeaveHandlerCH = () => {
-        gsap.to(changeButtonRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+        mouseLeaveAni(changeButtonRef)
     }
 
     const mouseEnterHandlerApply = () => {
-        gsap.to(applyButtonRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
+        mouseEnterAni(applyButtonRef)
     }
     const mouseLeaveHandlerApply = () => {
-        gsap.to(applyButtonRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
+        mouseLeaveAni(applyButtonRef)
     }
 
     const timeline = gsap.timeline({ defaults: { duration: 0.75 } })
