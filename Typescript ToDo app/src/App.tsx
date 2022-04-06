@@ -172,16 +172,13 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
   width:5rem;
   `;
 
-  console.log(user);
-
-
   return (
     <div className={classes.pageWrapper} ref={pageWrapperRef}>
       <CustomCursor opacity={0.8} fill="black" strokeColor="#FFBC80" strokeWidth={8} dimensions={35} smoothness={{
         movement: 0.5,
         scale: 0.1,
         opacity: 0.2,
-      }} targets={[classes.btnDel]} targetScale={4} />
+      }} />
 
       {(!isAuthenticated && !isLoading) && <LoginCard />}
       {isAuthenticated && <p className={classes.userUsername}>Welcome back <b>{user?.nickname}</b></p>}
