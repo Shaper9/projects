@@ -131,9 +131,9 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
         <React.Fragment>
             <li className={`${classes.toDo} ${isFinished && classes.finished} `} ref={toDoRef}>
                 <div className={classes.listWrapper}>
-                    <p>You need to: {!changingToDo && <span className={classes.font}>{props.activity}</span>} {changingToDo && <input className={classes.inputField} ref={changeActivityRef} defaultValue={props.activity} />} </p>
-                    <p>Date of activity: {!changingToDo && <span className={classes.font}>{props.date}</span>} {changingToDo && <input className={classes.inputField} defaultValue={props.date} type='date' ref={changeDateRef} />}</p>
-                    <p>Type of activity: {!changingToDo && <span className={classes.font}>{props.type}</span>} {changingToDo && <select className={classes.inputField} ref={changeTypeOfActivityRef} defaultValue={props.type}>
+                    <p>You need to: {!changingToDo ? <span className={classes.font}>{props.activity}</span> : <input className={classes.inputField} ref={changeActivityRef} defaultValue={props.activity} />} </p>
+                    <p>Date of activity: {!changingToDo ? <span className={classes.font}>{props.date}</span> : <input className={classes.inputField} defaultValue={props.date} type='date' ref={changeDateRef} />}</p>
+                    <p>Type of activity: {!changingToDo ? <span className={classes.font}>{props.type}</span> : <select className={classes.inputField} ref={changeTypeOfActivityRef} defaultValue={props.type}>
                         <option value="Job" >Job</option>
                         <option value="Hobby" >Hobby</option>
                         <option value="Free-time">Free time</option>
