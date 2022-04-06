@@ -24,10 +24,10 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
     const changeButtonRef = React.createRef<HTMLButtonElement>()
     const applyButtonRef = React.createRef<HTMLButtonElement>()
 
-    const mouseEnterAni = (buttonRef: any) => {
+    const mouseEnterAni = (buttonRef: React.RefObject<HTMLButtonElement>) => {
         gsap.to(buttonRef.current, { scaleX: 1.3, scaleY: 1.5, ease: "elastic.out(1, 0.3)" })
     }
-    const mouseLeaveAni = (buttonRef: any) => {
+    const mouseLeaveAni = (buttonRef: React.RefObject<HTMLButtonElement>) => {
         gsap.to(buttonRef.current, { scaleX: 1, scaleY: 1, ease: "elastic.out(1, 0.2)", duration: 1 })
     }
 
