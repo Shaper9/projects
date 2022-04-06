@@ -119,7 +119,6 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
         filteredUsers![0].date = changeDateRef.current!.value
         filteredUsers![0].type = changeTypeOfActivityRef.current!.value
         filteredUsers?.push(currentUserId)
-        console.log(filteredUsers);
 
         props.updatedToDo(filteredUsers)
         setChangingToDo(!changingToDo)
@@ -142,11 +141,11 @@ const ToDo: React.FC<{ key: string, activity: string, date: string, type: string
                 </div>
 
                 <div className={classes.btnWrapper}>
-                    <Button className={classes.btn} ref={btnDelRef} handleClick={removeHandler} onMouseEnter={mouseEnterHandleDel} onMouseLeave={mouseLeaveHandlerDel}>DELETE</Button>
+                    <Button className={classes.btnDel} ref={btnDelRef} handleClick={removeHandler} onMouseEnter={mouseEnterHandleDel} onMouseLeave={mouseLeaveHandlerDel}>DELETE</Button>
 
                     {(!changingToDo && !isFinished) && <Button className={classes.btn} handleClick={changeToDoHandler} onMouseEnter={mouseEnterHandleCH} onMouseLeave={mouseLeaveHandlerCH} ref={changeButtonRef}>CHANGE</Button>}
                     {changingToDo && <Button className={classes.btn} handleClick={changeToDoHandlerUpdate} ref={applyButtonRef} onMouseEnter={mouseEnterHandlerApply} onMouseLeave={mouseLeaveHandlerApply}>APPLY</Button>}
-                    {/* @ts-ignore */}
+
                     {!isFinished && <button hidden={finishHidden} className={classes.btnFini} ref={btnFiniRef} onMouseEnter={mouseEnterHandleFini} onMouseLeave={mouseLeaveHandlerFini} onClick={finishedHandler}>FINISHED</button>}
 
                 </div>

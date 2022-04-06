@@ -145,10 +145,10 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
     toDoNeedsToBeUpdated!.type = updatedToDo[0].type
     console.log(dummyToDo);
 
-    let updatedDummyToDos = dummyToDo
+    let updatedDummyToDos: any = dummyToDo
     for (const key in dummyToDo) {
       if (dummyToDo[key].id === updatedToDo[1]) {
-        // @ts-ignore
+
         updatedDummyToDos[key] = toDoNeedsToBeUpdated
         setDummyToDo(updatedDummyToDos)
         setDummyToDo(prevstate => [...prevstate])

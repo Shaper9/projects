@@ -23,7 +23,8 @@
     margin: 0.5em 0 0.5em 0;
 }
 
-.btnFini {
+.btnFini,
+.btnDel {
     height: 20px;
     width: 8em;
     height: 2em;
@@ -40,7 +41,12 @@
 }
 
 .btnFini:hover {
-    background-color: white;
+    background-color: #adff2f;
+    color: black;
+}
+
+.btnDel:hover {
+    background-color: red;
     color: black;
 }
 
