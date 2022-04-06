@@ -1,3 +1,7 @@
+body {
+    height: 100vh;
+}
+
 .card {
     width: 60%;
     height: 80%;
@@ -54,6 +58,7 @@
     &__button:hover {
         background-color: white;
         color: black;
+        cursor: none;
     }
 
     &__button::after {

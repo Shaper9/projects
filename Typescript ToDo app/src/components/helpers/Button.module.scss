@@ -1,4 +1,4 @@
-.submitButton{
+.submitButton {
     height: 20px;
     width: 8em;
     height: 2em;
@@ -10,7 +10,8 @@
     color: white;
 }
 
-.submitButton:hover{
+.submitButton:hover {
     background-color: white;
     color: black;
+    cursor: none;
 }

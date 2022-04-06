@@ -1,3 +1,12 @@
+body {
+    cursor: none;
+}
+
+root {
+    cursor: none;
+}
+
+
 .pageWrapper {
     padding: 20px;
     overflow-x: hidden;
@@ -23,7 +32,7 @@
     }
 
     .logoutButton:hover {
-        content: "X";
+        cursor: none;
         background-color: white;
         color: black;
     }
@@ -35,4 +44,12 @@
     position: absolute;
     top: 1rem;
     right: 5rem;
+}
+
+.userPic {
+    position: absolute;
+    max-width: 3rem;
+    max-height: auto;
+    right: 1rem;
+    top: 2.4rem;
 }
