@@ -5,9 +5,6 @@ import Button from "./helpers/Button";
 import { gsap } from 'gsap';
 import useFetch from "./hooks/use-fetch";
 
-
-
-
 interface ToDo {
     id?: string;
     activity: string;

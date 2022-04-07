@@ -84,9 +84,7 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
     setDummyToDo(fetchedTodos)
   }
   useEffect(() => {
-
     gotData()
-
     // Page enterence Animation
     gsap.fromTo(pageWrapperRef.current, { opacity: 0 }, { opacity: 1, duration: 0.500 })
   }, [isAuthenticated]);
@@ -166,7 +164,7 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
     }
   }
 
-  const override = css`
+  const overrideLoaderCSS = css`
   margin-top: 20rem;
   height:5rem;
   width:5rem;
@@ -175,7 +173,7 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
   return (
     <div className={classes.pageWrapper} ref={pageWrapperRef}>
       <CustomCursor opacity={0.8} fill="black" strokeColor="#FFBC80" strokeWidth={8} dimensions={35} smoothness={{
-        movement: 0.5,
+        movement: 0.9,
         scale: 0.1,
         opacity: 0.2,
       }} />
@@ -185,7 +183,7 @@ const App: React.FC<{ filteredId: string, updatedToDo: any }> = () => {
       {isAuthenticated && <LogoutButton className={classes.logoutButton} />}
       {isAuthenticated && <img src={user?.picture} className={classes.userPic} />}
 
-      {isLoading && <PulseLoader css={override} />}
+      {isLoading && <PulseLoader css={overrideLoaderCSS} />}
       {(!isLoading && isAuthenticated) && <ToDoForm newUser={addNewUserHandler} />}
       {isAuthenticated && <ToDoList toDo={dummyToDo} filteredUsers={usersFilter} filteredId={finishedHandler} loggedInUser={loggedInUser?.id} updatedToDo={updateToDoHandler} />}
 
