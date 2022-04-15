@@ -1,0 +1,25 @@
+.heroSectionText {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .heroH1 {
+        font-weight: 700;
+    }
+
+    .heroPara {
+        text-align: left;
+        color: hsl(233, 8%, 62%);
+    }
+
+    .heroButton {
+        padding: 1rem 2rem 1rem 2rem;
+        font-size: 15px;
+    }
+}
+
+.heroSectionText>* {
+    margin: 3rem 0 0 0;
+}

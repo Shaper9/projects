@@ -1,0 +1,57 @@
+@import '../../map.module.scss';
+
+.cartImg {
+    height: 1.2rem;
+    width: auto;
+    background-color: transparent;
+}
+
+.navWrapper {
+    padding: 2rem 0 2rem 0;
+
+    .navbarWall {
+        max-width: 1500px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+
+        .navMenuWrapper {
+            display: flex;
+            justify-content: space-between;
+            min-width: 18rem;
+
+            .navMenuLink {
+                color: color(grayish-blue);
+                font-family: $font-style;
+                font-weight: 700;
+                text-decoration: none;
+                position: relative;
+            }
+
+            .navMenuLink::before {
+                content: '';
+                transition: all 250ms ease-in-out;
+                position: absolute;
+                top: 30px;
+                left: 0;
+                background: linear-gradient(90deg, rgba(49, 211, 92, 1) 0%, rgba(43, 183, 218, 1) 100%);
+                width: 0rem;
+                height: 0.2rem;
+            }
+
+            .navMenuLink:hover::before {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.navCartButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        margin-left: 10px;
+    }
+}

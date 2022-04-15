@@ -1,0 +1,15 @@
+@import '../../map.module.scss';
+
+.itemsContainerWrapper {
+    background-color: color(very-light-grey-blue);
+    max-height: 1000px;
+    font-family: $font-style;
+}
+
+.itemsContainerWall {
+    margin: auto;
+    max-width: 1500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

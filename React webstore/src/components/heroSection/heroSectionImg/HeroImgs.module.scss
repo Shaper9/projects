@@ -1,0 +1,18 @@
+.heroSectionImgs {
+    // background-color: yellow;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.backgroundImg {
+    height: 100%;
+    background-image: url(../../../img/heroSectionBG.svg);
+    background-position: left bottom;
+}
+
+.heroPhoneImg {
+    position: absolute;
+    top: -15%;
+    left: 29%;
+}
