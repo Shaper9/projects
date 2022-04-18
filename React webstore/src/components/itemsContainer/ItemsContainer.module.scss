@@ -2,7 +2,6 @@
 
 .itemsContainerWrapper {
     background-color: color(very-light-grey-blue);
-    max-height: 1000px;
     font-family: $font-style;
 }
 
@@ -12,4 +11,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    position: relative;
+}
+
+.spinnerWrapper {
+    max-width: 1500px;
+    margin: auto;
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

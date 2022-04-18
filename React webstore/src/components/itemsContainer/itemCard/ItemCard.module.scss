@@ -21,6 +21,8 @@
     h3 {
         font-weight: 400;
         margin-bottom: 2rem;
+        font-size: 13px;
+        font-weight: 700;
     }
 
     p {
@@ -38,27 +40,32 @@
     align-items: flex-start;
 }
 
+
+
+
+
+
+
 .iconBtn {
     position: absolute;
-    right: 5px;
-    top: 3px;
-    width: 40px;
-    height: 40px;
+    right: 15px;
+    top: 5px;
+    width: 50px;
+    height: 50px;
     border: 1px solid #cdcdcd;
     background: white;
     border-radius: 25px;
     overflow: hidden;
-    transition: width 0.2s ease-in-out;
+    transition: width 0.1s ease-in-out;
 }
 
 .addBtn:hover {
     width: 120px;
-    cursor: pointer;
 }
 
 .addBtn::before,
 .addBtn::after {
-    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    transition: width 0.1s ease-in-out, border-radius 0.1s ease-in-out;
     content: "";
     position: absolute;
     height: 4px;
@@ -80,9 +87,59 @@
     border-bottom-left-radius: 2px;
 }
 
+.iconBtn:focus {
+    outline: none;
+}
+
 .btnTxt {
     opacity: 0;
-    transition: opacity 0.1s;
+    transition: opacity 0.2s;
+}
+
+.addBtn:hover::before,
+.addBtn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+
+.addBtn:hover .btn-txt {
+    opacity: 1;
+}
+
+.addIcon::after,
+.addIcon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: linear-gradient(90deg, rgba(49, 211, 92, 1) 0%, rgba(43, 183, 218, 1) 100%);
+    overflow: hidden;
+}
+
+.addIcon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.addIcon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.addBtn:hover .addIcon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+.addBtn:hover .addIcon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
 }
 
 .addBtn:hover .btnTxt {
