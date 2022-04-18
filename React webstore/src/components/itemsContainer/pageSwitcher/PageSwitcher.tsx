@@ -16,6 +16,8 @@ class PageSwitcher extends React.Component<{ activePage: any }, { activeButton: 
     button1clicked = () => {
         this.setState({ activeButton: 1 })
         this.props.activePage(1)
+        console.log(this);
+
     }
 
     button2clicked = () => {
@@ -41,9 +43,8 @@ class PageSwitcher extends React.Component<{ activePage: any }, { activeButton: 
                 <div className={classes.switchWall}>
                     <button onClick={this.button1clicked} className={this.state.activeButton === 1 ? classes.active : ''}>1</button>
                     <button onClick={this.button2clicked} className={this.state.activeButton === 2 ? classes.active : ''}>2</button>
-                    <button onClick={this.button3clicked} >3</button>
-                    <button onClick={this.button4clicked}>4</button>
-                    <div>{this.state.activeButton}</div>
+                    <button onClick={this.button3clicked} className={this.state.activeButton === 3 ? classes.active : ''}>3</button>
+                    <button onClick={this.button4clicked} className={this.state.activeButton === 4 ? classes.active : ''}>4</button>
                 </div>
             </div>
         )

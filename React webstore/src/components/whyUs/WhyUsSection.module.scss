@@ -1,0 +1,78 @@
+@import '../../map.module.scss';
+
+
+.whyUsSectionWrapper {
+    width: 100%;
+    background-color: hsl(220, 16%, 96%);
+}
+
+.whyUsSectionWall {
+    max-width: 1500px;
+    margin: auto;
+    height: 800px;
+    font-family: $font-style;
+}
+
+.headingText {
+    height: 40%;
+    // background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    h2 {
+        margin-bottom: 2rem;
+        font-weight: 400;
+        font-size: 2.5rem;
+    }
+
+    p {
+        color: color(grayish-blue);
+    }
+}
+
+.reasons {
+    height: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    div {
+        padding: 2rem;
+    }
+
+    .imgWrapper {
+        padding: 0;
+        height: 40%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        img {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .onlineBanking,
+    .simpleBudgeting,
+    .fastAndEasy,
+    .openApi {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+
+
+        h2 {
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            color: color(grayish-blue);
+            height: 50%;
+        }
+    }
+}

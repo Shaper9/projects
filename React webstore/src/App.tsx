@@ -5,9 +5,13 @@ import classes from './App.module.scss';
 import Navbar from './components/navbar/Navbar';
 import ItemsContainer from './components/itemsContainer/ItemsContainer';
 import HeroSection from './components/heroSection/HeroSection';
+import WhyUsSection from './components/whyUs/WhyUsSection';
+import Footer from './components/footer/Footer';
 
 
-function App() {
+
+
+const App: React.FC = () => {
   return (
     <main className={classes.pageWrapper}>
 
@@ -15,7 +19,12 @@ function App() {
 
       <HeroSection />
 
+
       <ItemsContainer />
+
+      <WhyUsSection />
+
+      <Footer />
 
     </main>
   );

@@ -54,7 +54,6 @@ const ItemsContainer: React.FC<{ activePage?: number }> = () => {
         }
     }
 
-    console.log(products);
 
 
     return (
@@ -63,9 +62,9 @@ const ItemsContainer: React.FC<{ activePage?: number }> = () => {
                 {loading && <div className={classes.spinnerWrapper}>
                     <MoonLoader />
                 </div>}
-                {!loading && products.map((product: any) => <ItemCard key={product.id} imgSrc={product.thumbnail} price={product.price} brand={product.brand} />)}
+                {!loading && products.map((product: any) => <ItemCard key={product.id} imgSrc={product.thumbnail} price={product.price} brand={product.brand} wholeItem={product} />)}
             </div>
-            {!loading && <PageSwitcher activePage={changeActivePageHandler} />}
+            <PageSwitcher activePage={changeActivePageHandler} />
         </div>
     )
 }

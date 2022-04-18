@@ -3,11 +3,21 @@ import classes from './Navbar.module.scss'
 import logoImg from "../../img/logo.svg"
 import cartIcon from "../../img/cartIcon.png"
 import Button from '../helpers/Button';
+import { useSelector } from 'react-redux';
+import { useInView } from 'react-intersection-observer';
 
 
 const Navbar: React.FC = () => {
 
-    const cartRef = React.createRef<HTMLButtonElement>()
+    // Observer
+    // @ts-ignore
+    const { ref, inView } = useInView({
+        threshold: 0
+    })
+
+
+    // const cartRef = React.createRef<HTMLButtonElement>()
+    const nOfItemsInCart = useSelector((state: any) => state.cart.numberOfItemsInCart)
 
     const clickHandler = () => {
         console.log("cart log");
@@ -27,11 +37,16 @@ const Navbar: React.FC = () => {
                     <a href="#" className={classes.navMenuLink}>Careers</a>
                 </div>
                 <div className={classes.navCartWrapper}>
-                    <Button className={classes.navCartButton} ref={cartRef} onClick={clickHandler} >
+                    <Button className={classes.navCartButton} ref={ref} onClick={clickHandler} >
                         <span>CART</span> <img src={cartIcon} alt="cart" className={classes.cartImg} />
+                        <div className={classes.nOfItemsInCart}>{nOfItemsInCart}</div>
                     </Button>
                 </div>
             </div>
+            {!inView && <div className={classes.absoluteCart}>
+                <img src={cartIcon} alt="" />
+                <p>{nOfItemsInCart}</p>
+            </div>}
         </nav>
     )
 }

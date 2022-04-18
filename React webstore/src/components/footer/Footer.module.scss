@@ -1,0 +1,67 @@
+@import '../../map.module.scss';
+
+
+.footerWrapper {
+    background-color: color(dark-blue);
+    color: color(grayish-blue);
+    width: 100%;
+    font-family: $font-style;
+}
+
+.footerWall {
+    max-width: 1500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    height: 200px;
+
+    .socialMediaField {
+        padding: 5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        img {
+            cursor: pointer;
+        }
+    }
+
+    .linkField {
+        display: flex;
+
+        .row {
+            height: 100%;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            span {
+                cursor: pointer;
+            }
+
+            span:hover {
+                color: color(lime-green);
+            }
+        }
+    }
+
+    .buttonField {
+        display: flex;
+        padding: 2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        .button {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.button {
+    font-weight: 400;
+    font-family: $font-style;
+}
