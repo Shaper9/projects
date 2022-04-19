@@ -3,6 +3,7 @@ import classes from './ItemsContainer.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { productsActions } from '../store/store';
 import ItemCard from './itemCard/ItemCard';
+import ItemModul from './itemModul/ItemModul';
 import MoonLoader from "react-spinners/MoonLoader";
 import PageSwitcher from './pageSwitcher/PageSwitcher';
 
@@ -10,6 +11,7 @@ const ItemsContainer: React.FC<{ activePage?: number }> = () => {
 
     const dispatch = useDispatch()
     const products = useSelector((state: any) => state.product.products)
+    const isModulVisible = useSelector((state: any) => state.product.itemModulIsVisible)
     const [loading, setLoading] = useState(false)
     async function fetchProducts() {
         try {
@@ -54,15 +56,19 @@ const ItemsContainer: React.FC<{ activePage?: number }> = () => {
         }
     }
 
-
+    const [itemThatNeedsToBeShown, setItemThatNeedsToBeShown] = useState<number | string>('')
+    const itemIdThatNeedsToBeShownHandler = (itemId: number) => {
+        setItemThatNeedsToBeShown(itemId)
+    }
 
     return (
         <div className={classes.itemsContainerWrapper}>
+            {isModulVisible && <ItemModul itemIdThatNeedsToBeShown={itemThatNeedsToBeShown} />}
             <div className={classes.itemsContainerWall}>
                 {loading && <div className={classes.spinnerWrapper}>
                     <MoonLoader />
                 </div>}
-                {!loading && products.map((product: any) => <ItemCard key={product.id} imgSrc={product.thumbnail} price={product.price} brand={product.brand} wholeItem={product} />)}
+                {!loading && products.map((product: any) => <ItemCard key={product.id} imgSrc={product.thumbnail} price={product.price} brand={product.brand} wholeItem={product} itemId={product.id} itemIdThatNeedsToBeShown={itemIdThatNeedsToBeShownHandler} />)}
             </div>
             <PageSwitcher activePage={changeActivePageHandler} />
         </div>

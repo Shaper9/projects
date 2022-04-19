@@ -1,12 +1,15 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-const productsInitialState = { products: [] }
+const productsInitialState = { products: [], itemModulIsVisible: false }
 const productsSlice = createSlice({
     name: 'product',
     initialState: productsInitialState,
     reducers: {
         setProductItems(state, action) {
             state.products = action.payload
+        },
+        setItemModulIsVisible(state) {
+            state.itemModulIsVisible = !state.itemModulIsVisible
         }
     }
 }

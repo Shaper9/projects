@@ -16,8 +16,6 @@ class PageSwitcher extends React.Component<{ activePage: any }, { activeButton: 
     button1clicked = () => {
         this.setState({ activeButton: 1 })
         this.props.activePage(1)
-        console.log(this);
-
     }
 
     button2clicked = () => {

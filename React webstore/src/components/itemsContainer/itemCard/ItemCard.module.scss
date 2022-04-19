@@ -1,6 +1,5 @@
 .cardWrapper {
-    min-width: 270px;
-    max-width: 270px;
+    width: 270px;
     height: 360px;
     list-style: none;
     margin: 1rem 0 1rem 0;
@@ -16,6 +15,7 @@
         width: 270px;
         height: 150px;
         border-radius: 20px;
+        cursor: pointer;
     }
 
     h3 {
@@ -23,10 +23,12 @@
         margin-bottom: 2rem;
         font-size: 13px;
         font-weight: 700;
+        cursor: pointer;
     }
 
     p {
         color: hsl(233, 8%, 62%);
+        cursor: pointer;
     }
 
     .imgLoaderWrapper {
