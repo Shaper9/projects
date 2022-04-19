@@ -1,4 +1,4 @@
-@import '../../map.module.scss';
+@import '../../../map.module.scss';
 
 
 .footerWrapper {
@@ -6,6 +6,9 @@
     color: color(grayish-blue);
     width: 100%;
     font-family: $font-style;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -200px;
 }
 
 .footerWall {

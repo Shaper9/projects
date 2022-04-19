@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './ItemsContainer.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { productsActions } from '../store/store';
+import { productsActions } from '../../store/store.js';
 import ItemCard from './itemCard/ItemCard';
 import ItemModul from './itemModul/ItemModul';
 import MoonLoader from "react-spinners/MoonLoader";

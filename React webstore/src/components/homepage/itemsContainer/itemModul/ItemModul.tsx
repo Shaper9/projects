@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from "./ItemModul.module.scss"
 import Backdrop from './Backdrop';
-import closeIcon from '../../../img/icon-close.svg'
+import closeIcon from '../../../../img/icon-close.svg'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
-import { productsActions, cartActions } from '../../store/store';
+import { productsActions, cartActions } from '../../../store/store.js';
 
 
 // Swiper
@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
-import Button from '../../helpers/Button';
+import Button from '../../../helpers/Button';
 
 
 

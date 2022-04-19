@@ -1,4 +1,4 @@
-@import '../../map.module.scss';
+@import '../../../map.module.scss';
 
 .cartImg {
     height: 1.2rem;
@@ -26,7 +26,19 @@
                 font-weight: 700;
                 text-decoration: none;
                 position: relative;
+
             }
+
+            .active {
+                color: red;
+                // border-left: 2px solid color(lime-green);
+                // border-right: 2px solid color(lime-green);
+                // border-top: 2px solid color(lime-green);
+                border-bottom: 5px solid color(lime-green);
+                text-decoration: none;
+            }
+
+
 
             .navMenuLink::before {
                 content: '';
@@ -46,6 +58,8 @@
         }
     }
 }
+
+
 
 .navCartButton {
     display: flex;

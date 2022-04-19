@@ -1,12 +1,15 @@
 import React from 'react';
-// @ts-ignore
 import classes from './App.module.scss';
-
-import Navbar from './components/navbar/Navbar';
-import ItemsContainer from './components/itemsContainer/ItemsContainer';
-import HeroSection from './components/heroSection/HeroSection';
-import WhyUsSection from './components/whyUs/WhyUsSection';
-import Footer from './components/footer/Footer';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import MoonLoader from "react-spinners/MoonLoader";
+// import AboutPage from './components/aboutpage/AboutPage';
+const AboutPage = React.lazy(() => import("./components/aboutpage/AboutPage"));
+// import Homepage from './Homepage';
+const Homepage = React.lazy(() => import("./Homepage"))
 
 
 
@@ -15,16 +18,25 @@ const App: React.FC = () => {
   return (
     <main className={classes.pageWrapper}>
 
-      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          {/* HOMEPAGE ROUTE */}
+          <Route path='/' element={
+            <React.Suspense fallback={<div className={classes.fullPageLoader}><MoonLoader /></div>}>
+              <Homepage />
+            </React.Suspense>}>
 
-      <HeroSection />
+          </Route>
 
+          {/* ABOUTPAGE ROUTE */}
+          <Route path='/about' element={
+            <React.Suspense fallback={<div className={classes.fullPageLoader}><MoonLoader /></div>}>
+              <AboutPage />
+            </React.Suspense>}
+          />
 
-      <ItemsContainer />
-
-      <WhyUsSection />
-
-      <Footer />
+        </Routes>
+      </BrowserRouter>
 
     </main>
   );

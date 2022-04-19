@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './Navbar.module.scss'
-import logoImg from "../../img/logo.svg"
-import cartIcon from "../../img/cartIcon.png"
-import Button from '../helpers/Button';
+import logoImg from "../../../img/logo.svg"
+import cartIcon from "../../../img/cartIcon.png"
+import Button from '../../helpers/Button';
 import { useSelector } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
+import { NavLink } from 'react-router-dom';
 
 
 const Navbar: React.FC = () => {
@@ -15,8 +16,6 @@ const Navbar: React.FC = () => {
         threshold: 0
     })
 
-
-    // const cartRef = React.createRef<HTMLButtonElement>()
     const nOfItemsInCart = useSelector((state: any) => state.cart.numberOfItemsInCart)
 
     const clickHandler = () => {
@@ -28,10 +27,12 @@ const Navbar: React.FC = () => {
         <nav className={classes.navWrapper}>
             <div className={classes.navbarWall}>
                 <div className={classes.imgWrapper}>
-                    <img src={logoImg} alt="logo" />
+                    <NavLink to='/'><img src={logoImg} alt="logo" /></NavLink>
                 </div>
                 <div className={classes.navMenuWrapper}>
-                    <a href="#" className={classes.navMenuLink}>About</a>
+                    <NavLink className={(navData) => (navData.isActive ? classes.active : classes.navMenuLink)} to="/about">
+                        <div className={classes.navMenuLink}>About</div>
+                    </NavLink>
                     <a href="#" className={classes.navMenuLink}>Contact</a>
                     <a href="#" className={classes.navMenuLink}>Blog</a>
                     <a href="#" className={classes.navMenuLink}>Careers</a>

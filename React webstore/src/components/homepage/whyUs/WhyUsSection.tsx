@@ -1,9 +1,9 @@
 import React from "react"
 import classes from './WhyUsSection.module.scss'
-import onlineIcon from '../../img/icon-online.svg'
-import budgetingIcon from '../../img/icon-budgeting.svg'
-import fastAndEasyIcon from '../../img/icon-onboarding.svg'
-import apiIcon from '../../img/icon-api.svg'
+import onlineIcon from '../../../img/icon-online.svg'
+import budgetingIcon from '../../../img/icon-budgeting.svg'
+import fastAndEasyIcon from '../../../img/icon-onboarding.svg'
+import apiIcon from '../../../img/icon-api.svg'
 
 
 const WhyUsSection = () => {

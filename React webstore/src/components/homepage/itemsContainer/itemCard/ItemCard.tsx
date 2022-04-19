@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './ItemCard.module.scss'
 import { useDispatch } from 'react-redux';
-import { cartActions, productsActions } from '../../store/store';
+import { cartActions, productsActions } from '../../../store/store.js';
 
 
 const ItemCard: React.FC<{ imgSrc: string, price: number, brand: string, itemId: number, wholeItem: any, itemIdThatNeedsToBeShown: any }> = (props) => {

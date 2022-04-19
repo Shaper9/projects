@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "./HeroSectionText.module.scss"
-import Button from '../../helpers/Button';
+import Button from '../../../helpers/Button';
 
 
 const HeroSectionText: React.FC<{ className: string }> = (props) => {

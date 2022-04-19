@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from "./Footer.module.scss"
-import facebookIcon from '../../img/footerimgs/icon-facebook.svg'
-import ytIcon from '../../img/footerimgs/icon-youtube.svg'
-import twitIcon from '../../img/footerimgs/icon-twitter.svg'
-import pintIcon from '../../img/footerimgs/icon-pinterest.svg'
-import instaIcon from '../../img/footerimgs/icon-instagram.svg'
-import Button from '../helpers/Button';
+import facebookIcon from '../../../img/footerimgs/icon-facebook.svg'
+import ytIcon from '../../../img/footerimgs/icon-youtube.svg'
+import twitIcon from '../../../img/footerimgs/icon-twitter.svg'
+import pintIcon from '../../../img/footerimgs/icon-pinterest.svg'
+import instaIcon from '../../../img/footerimgs/icon-instagram.svg'
+import Button from '../../helpers/Button';
 
 
 const Footer: React.FC = () => {
