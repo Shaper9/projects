@@ -25,7 +25,7 @@ const ItemModul: React.FC<{ itemIdThatNeedsToBeShown: number | string }> = (prop
     const allItems = useSelector((state: any) => state.product.products)
     const dispatch = useDispatch()
     const itemThatNeedsToBeShown = allItems.filter((item: any) => item.id === props.itemIdThatNeedsToBeShown)
-    console.log(itemThatNeedsToBeShown);
+
 
     const backdropClickHandler = () => {
         dispatch(productsActions.setItemModulIsVisible())
@@ -48,7 +48,7 @@ const ItemModul: React.FC<{ itemIdThatNeedsToBeShown: number | string }> = (prop
                 <Swiper
                     navigation={true}
                     slidesPerView={3}
-                    spaceBetween={100}
+                    spaceBetween={50}
                     pagination={{
                         clickable: true,
                     }}

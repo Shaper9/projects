@@ -23,6 +23,10 @@ const cartSlice = createSlice({
         addNewItemToCart(state, action) {
             state.itemsInCart.push(action.payload)
             state.numberOfItemsInCart = state.numberOfItemsInCart + 1
+        },
+        removeItemFromCart(state, action) {
+            state.itemsInCart = state.itemsInCart.filter(item => item.id != action.payload.id)
+            state.numberOfItemsInCart = state.numberOfItemsInCart - 1
         }
     }
 })

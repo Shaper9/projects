@@ -5,7 +5,7 @@ import cartIcon from "../../../img/cartIcon.png"
 import Button from '../../helpers/Button';
 import { useSelector } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 const Navbar: React.FC = () => {
@@ -38,16 +38,20 @@ const Navbar: React.FC = () => {
                     <a href="#" className={classes.navMenuLink}>Careers</a>
                 </div>
                 <div className={classes.navCartWrapper}>
-                    <Button className={classes.navCartButton} ref={ref} onClick={clickHandler} >
-                        <span>CART</span> <img src={cartIcon} alt="cart" className={classes.cartImg} />
-                        <div className={classes.nOfItemsInCart}>{nOfItemsInCart}</div>
-                    </Button>
+                    <Link to='/yourcart'>
+                        <Button className={classes.navCartButton} ref={ref} onClick={clickHandler} >
+                            <span>CART</span> <img src={cartIcon} alt="cart" className={classes.cartImg} />
+                            <div className={classes.nOfItemsInCart}>{nOfItemsInCart}</div>
+                        </Button>
+                    </Link>
                 </div>
             </div>
-            {!inView && <div className={classes.absoluteCart}>
-                <img src={cartIcon} alt="" />
-                <p>{nOfItemsInCart}</p>
-            </div>}
+            <Link to='/yourcart'>
+                {!inView && <div className={classes.absoluteCart} >
+                    <img src={cartIcon} alt="" />
+                    <p>{nOfItemsInCart}</p>
+                </div>}
+            </Link>
         </nav>
     )
 }

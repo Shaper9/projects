@@ -1,4 +1,11 @@
+.aboutPageWrapper {
+    width: 100%;
+    height: 100%;
+}
+
 .aboutPageContent {
+    margin: auto;
+    max-width: 1500px;
     height: 100vh;
     display: flex;
     flex-direction: column;

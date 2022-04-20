@@ -18,7 +18,9 @@ const Homepage: React.FC = () => {
 
             <WhyUsSection />
 
-            <Footer /></>
+            <Footer />
+
+        </>
     )
 }
 
