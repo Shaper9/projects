@@ -27,7 +27,7 @@ const HeaderCardButton = props => {
 
         setTimeout(() => { setBtnIsHighlighted(false) }, 200)
 
-    }, [items]) /* ovaj use effect ce se odraditi samo kad se items iz contexta promeni  */
+    }, [items, cartCtx.items.length]);
 
 
     return (
